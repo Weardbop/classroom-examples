@@ -26,7 +26,7 @@ add(1, 2, 3) -> 5
 from typing import List
 
 
-def add():
+def add(a: float, b: float) -> float: 
     """Adds two numbers.
     
     Args:
@@ -36,10 +36,12 @@ def add():
     Returns:
         float: The sum of the two numbers.
     """
-    pass  # pass is a place holder. remove this.
+    return a+b
+assert add(4, -1) == 3
+assert add(144, 121) == 265
+assert add(17, 200) == 217
 
-
-def format_name():
+def format_name(firstname: str, lastname: str) -> str:
     """Formats a name in 'Last, First' format.
 
     For example: "Smith, John"
@@ -51,10 +53,12 @@ def format_name():
     Returns:
         str: The formatted name.
     """
-    pass
+    return lastname + ", " + firstname
+assert format_name('Richard', 'Yang') == "Yang, Richard"
+assert format_name('Matthieu', 'Tsang') == "Tsang, Matthieu"
+assert format_name('Timothy', 'Shen') == "Shen, Timothy"
 
-
-def strip_phone_number():
+def strip_phone_number(unformattednumber: str)->str:
     """Remove all characters but integers from a phone number.
 
     Numbers entered by users can be given in a variety of formats.
@@ -70,10 +74,17 @@ def strip_phone_number():
     Returns:
         str: The phone number stripped to just it's digits.
     """
-    pass
+    numbers = ['0','1','2','3','4','5','6','7','8','9']
+    formattednumber = ''
+    for i in unformattednumber:
+        if i in numbers:
+            formattednumber += i
+    return formattednumber
+assert strip_phone_number("984-123-3241") == "9841233241"
+assert strip_phone_number("(823)-123-0a29asd3asd") == "8231230293"
+assert strip_phone_number("933 394 0123") == "9333940123"
 
-
-def format_phone_number():
+def format_phone_number(unformattednumber: str) -> str:
     """Formats a phone number to (000)000-0000.
 
     Args:
@@ -83,10 +94,12 @@ def format_phone_number():
     Returns:
         str: The formatted phone number.
     """
-    pass
+    return '(' + unformattednumber[:3] + ')' + unformattednumber[3:6] + '-' + unformattednumber[6:]
+assert format_phone_number('9051234567') == "(905)123-4567"
+assert format_phone_number('0000000000') == '(000)000-0000'
+assert format_phone_number('4236958098') == '(423)695-8098'
 
-
-def add_from_list():
+def add_from_list(numlist: list, index1: int, index2: int)->int:
     """Adds two values from a list at index a and b.
     
     Args:
@@ -97,6 +110,8 @@ def add_from_list():
     Returns:
         int: The two values at index a and b added together.
     """
-    pass  
-
+    return numlist[index1] + numlist[index2]
+assert add_from_list([7,6,4,23,5],2,4) == 9
+assert add_from_list([6,9,2,1,4,2],0,-1) == 8
+assert add_from_list([0,1,3,4,12,4],1,1) == 2
 ```
